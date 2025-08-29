@@ -1,13 +1,16 @@
 # 📈 GNSS-Strain-Profile-Analysis-along-Transects
 
-This repository contains the script **`Strain Profile Analysis along GPS Transects.py`**, a Python tool developed to analyze crustal deformation along tectonic transects using GPS datasets.  
-The workflow is designed for applications in **active tectonics, fault kinematics, and seismic hazard analysis**.
+This script performs **strain parameter analysis** (dilation, rotation, and maximum shear) along predefined GPS transects.  
+It is designed to integrate results from **SSPX (Allmendinger et al.2009)** with geographic transects, allowing the visualization of how strain evolves along active tectonic profiles.  
+
 
 ---
 
 ## 🔎 Overview
-The script computes **strain accumulation profiles** along user-defined transects based on GPS station displacements.  
-It integrates **geospatial preprocessing, interpolation, and geophysical calculations** to quantify deformation across subduction zones and fault systems.
+Projects GPS strain results from SSPX onto user-defined transects (shapefiles).  
+- Computes **cumulative distance along transects** (in kilometers).  
+- Visualizes strain parameters as scatter plots with **polynomial trend lines**.  
+- Facilitates **tectonic interpretation of crustal deformation** across subduction zones and fault systems.  
 
 ---
 
@@ -24,20 +27,44 @@ It integrates **geospatial preprocessing, interpolation, and geophysical calcula
 ---
 
 ## 📂 Input Data
-- **GPS shapefiles** or CSV with:
-  - Station ID
-  - Latitude / Longitude
-  - Horizontal displacement (E, N components)
-  - Uncertainties (optional)
+1. **Strain data (SSPX outputs)**  
+   - Text files (`.txt`) exported from SSPX (Allmendinger).  
+   - Contain point-based strain parameters: *dilation, rotation, maxShear*.  
 
-- **Transect definition**:
-  - Start and end coordinates (lat/lon).
-  - Transect width (optional).
+2. **Transects (Shapefiles)**  
+   - Linear features (`.shp`) representing transects or profiles.  
+   - One transect = one profile line.  
+
+Each GPS/strain point is automatically projected onto its closest transect. Its position is converted into **cumulative distance along the profile (km)** for analysis.
+
 
 ---
-## Output
+## Example Output
 
 <p align="center"> <img width="500" alt="GPS Strain Profile Example" src="https://github.com/user-attachments/assets/ed705d6e-1cff-4ace-9907-fb6e97a02cd0" /> </p>
 ## 🖥️ Usage
-```bash
-python3 "Strain Profile Analysis along GPS Transects.py"
+
+Example of strain variation along a transect with polynomial fit.
+
+## 🔬 Applications
+
+Identifying strain gradients across active faults and subduction interfaces.
+
+Linking GPS-derived strain fields to tectonic segmentation.
+
+Comparing SSPX strain models with geologic/geomorphic features.
+
+Supporting earthquake hazard assessments with deformation profiles.
+
+##📜 Reference
+
+Allmendinger, R. W., Cardozo, N., & Fisher, D. (2012). Structural Geology Algorithms: Vectors & Tensors.
+
+SSPX software – widely used for structural analysis of strain parameters.
+
+## 📜 License
+
+This tool is released under the MIT License.
+© 2025 Hernán Porras Espinoza.
+
+
